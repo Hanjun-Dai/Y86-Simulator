@@ -36,9 +36,9 @@ MainWindow::MainWindow(QWidget *parent) :
     editorWindow = new EditorWindow;
     simWindow = new SimWindow;
     pictureFlow = new PictureFlow;
-
+addWidget(simWindow);
     addWidget(editorWindow);
-    addWidget(simWindow);
+
     addWidget(pictureFlow);
 
     connect(editorWindow, SIGNAL(change2SlideMode()), SLOT(showSlideMode()));

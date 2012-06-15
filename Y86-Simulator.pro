@@ -6,7 +6,11 @@ SOURCES += \
     SimWindow.cpp \
     SimWidget.cpp \
     PictureFlow.cpp \
-    EditorTab.cpp
+    EditorTab.cpp \
+    GraphView.cpp \
+    MemoryTab.cpp \
+    CacheTab.cpp \
+    RegFileView.cpp
 
 HEADERS += \
     MainWindow.h \
@@ -15,4 +19,8 @@ HEADERS += \
     SimWindow.h \
     SimWidget.h \
     PictureFlow.h \
-    EditorTab.h
+    EditorTab.h \
+    GraphView.h \
+    MemoryTab.h \
+    CacheTab.h \
+    RegFileView.h

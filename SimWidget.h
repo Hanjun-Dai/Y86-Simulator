@@ -3,6 +3,11 @@
 
 #include <QWidget>
 
+class GraphView;
+class MemoryTab;
+class CacheTab;
+class RegFileView;
+class EditorTab;
 class SimWidget : public QWidget
 {
     Q_OBJECT
@@ -13,6 +18,12 @@ signals:
     
 public slots:
     
+private:
+    GraphView *graphView;
+    MemoryTab *memoryTab;
+    CacheTab *cacheTab;
+    RegFileView *regFileView;
+    EditorTab *editorTab;
 };
 
 #endif // SIMWIDGET_H
