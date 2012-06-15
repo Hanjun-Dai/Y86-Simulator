@@ -1,9 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QWidget>
+#include <QStackedWidget>
 
-class MainWindow : public QWidget
+class EditorWindow;
+class SimWindow;
+class PictureFlow;
+class MainWindow : public QStackedWidget
 {
     Q_OBJECT
 public:
@@ -12,7 +15,15 @@ public:
 signals:
     
 public slots:
-    
+
+private slots:
+    void showTabMode(int index = -1);
+    void showSlideMode();
+
+private:
+    EditorWindow *editorWindow;
+    SimWindow *simWindow;
+    PictureFlow *pictureFlow;
 };
 
 #endif // MAINWINDOW_H
