@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>addtab_check.png</file>
+        <file>addtab_hover.png</file>
+        <file>addtab_normal.png</file>
+        <file>tab_check.png</file>
+        <file>tab_hover.png</file>
+        <file>tab_normal.png</file>
+    </qresource>
+</RCC>

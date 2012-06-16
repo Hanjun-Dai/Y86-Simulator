@@ -1,5 +1,10 @@
 #include <QIcon>
+#include <QTextEdit>
+#include <QScrollArea>
+#include <QSplitter>
+#include <QGridLayout>
 #include "EditorTab.h"
+#include "ASMHighlighter.h"
 
 class EditorTabPrivate
 {
@@ -11,7 +16,32 @@ public:
 EditorTab::EditorTab(QWidget *parent)
     : QWidget(parent)
 {
+    isEmpty = true;
     d = new EditorTabPrivate();
+
+    QSplitter *mainsplitter = new QSplitter;
+
+    QScrollArea *binaryarea = new QScrollArea;
+    binaryEdit = new QTextEdit;
+    binaryEdit->setLineWrapMode(QTextEdit::NoWrap);
+    binaryEdit->setReadOnly(true);
+    binaryarea->setWidget(binaryEdit);
+    binaryarea->setWidgetResizable(true);
+
+    QScrollArea *asmarea = new QScrollArea;
+    asmEdit = new QTextEdit;
+    asmEdit->setLineWrapMode(QTextEdit::NoWrap);
+    asmarea->setWidget(asmEdit);
+    asmarea->setWidgetResizable(true);
+    ASMHighlighter *highlighter = new ASMHighlighter(asmEdit->document());
+
+    mainsplitter->addWidget(asmarea);
+    mainsplitter->addWidget(binaryarea);
+
+    QGridLayout *layout = new QGridLayout;
+    layout->addWidget(mainsplitter);
+
+    setLayout(layout);
 }
 
 EditorTab::~EditorTab()

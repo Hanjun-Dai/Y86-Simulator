@@ -10,7 +10,10 @@ SOURCES += \
     GraphView.cpp \
     MemoryTab.cpp \
     CacheTab.cpp \
-    RegFileView.cpp
+    RegFileView.cpp \
+    ToolButton.cpp \
+    TabWidget.cpp \
+    ASMHighlighter.cpp
 
 HEADERS += \
     MainWindow.h \
@@ -23,4 +26,10 @@ HEADERS += \
     GraphView.h \
     MemoryTab.h \
     CacheTab.h \
-    RegFileView.h
+    RegFileView.h \
+    ToolButton.h \
+    TabWidget.h \
+    ASMHighlighter.h
+
+RESOURCES += \
+    images/images.qrc

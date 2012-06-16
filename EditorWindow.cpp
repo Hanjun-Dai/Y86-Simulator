@@ -1,24 +1,37 @@
 #include "EditorWindow.h"
+#include "EditorTab.h"
 #include <QGridLayout>
 #include <QTabWidget>
-#include <QToolButton>
+#include "ToolButton.h"
 #include <QToolBar>
 
-QTabWidget* EditorWindow::GetTabs()
+#include "TabWidget.h"
+
+TabWidget* EditorWindow::GetTabs()
 {
     return tabwidget;
+}
+
+void EditorWindow::addNewTab()
+{
+    EditorTab *tab = new EditorTab;
+    tab->setTitle("new");
+    tabwidget->addTab(tab);
 }
 
 EditorWindow::EditorWindow(QWidget *parent) :
     Frame(parent)
 {
-    changeModeButton = new QToolButton();
+    tabwidget = new TabWidget;
+    EditorTab *tab = new EditorTab;
+    tab->setTitle("new");
+    tabwidget->addTab(tab);
 
-    toolbar->addWidget(changeModeButton);
-
-    tabwidget = new QTabWidget;
+    QIcon i1(":/addtab_normal.png"), i2(":/addtab_hover.png"), i3(":/addtab_check.png");
+    addTabButton = new ToolButton(i1, i2, i3);
+    toolbar->addWidget(addTabButton);
 
     mainlayout->addWidget(tabwidget, 1, 0);
 
-    connect(changeModeButton, SIGNAL(clicked()), SIGNAL(change2SlideMode()));
+    connect(addTabButton, SIGNAL(clicked()), SLOT(addNewTab()));
 }

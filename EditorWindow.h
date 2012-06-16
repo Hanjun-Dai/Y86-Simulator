@@ -4,23 +4,23 @@
 #include <Frame.h>
 
 class QTabWidget;
-class QToolButton;
+class ToolButton;
+class TabWidget;
 class EditorWindow : public Frame
 {
     Q_OBJECT
 public:
     explicit EditorWindow(QWidget *parent = 0);
     
-    QTabWidget* GetTabs();
-
-signals:
-    void change2SlideMode();
+    TabWidget* GetTabs();
 
 public slots:
 
+private slots:
+    void addNewTab();
 private:
-    QTabWidget *tabwidget;
-    QToolButton *changeModeButton;
+    TabWidget *tabwidget;
+    ToolButton *addTabButton;
 };
 
 #endif // EDITORWINDOW_H
