@@ -13,7 +13,10 @@ SOURCES += \
     RegFileView.cpp \
     ToolButton.cpp \
     TabWidget.cpp \
-    ASMHighlighter.cpp
+    ASMHighlighter.cpp \
+    Pipeline.cpp \
+    Assembler.cpp \
+    Tools.cpp
 
 HEADERS += \
     MainWindow.h \
@@ -29,7 +32,11 @@ HEADERS += \
     RegFileView.h \
     ToolButton.h \
     TabWidget.h \
-    ASMHighlighter.h
+    ASMHighlighter.h \
+    Pipeline.h \
+    Constants.h \
+    Assembler.h \
+    Tools.h
 
 RESOURCES += \
     images/images.qrc

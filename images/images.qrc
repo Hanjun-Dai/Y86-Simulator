@@ -6,5 +6,20 @@
         <file>tab_check.png</file>
         <file>tab_hover.png</file>
         <file>tab_normal.png</file>
+        <file>compile_check.png</file>
+        <file>compile_hover.png</file>
+        <file>compile_normal.png</file>
+        <file>edit_check.png</file>
+        <file>edit_hover.png</file>
+        <file>edit_normal.png</file>
+        <file>open_check.png</file>
+        <file>open_hover.png</file>
+        <file>open_normal.png</file>
+        <file>save_check.png</file>
+        <file>save_hover.png</file>
+        <file>save_normal.png</file>
+        <file>sim_check.png</file>
+        <file>sim_hover.png</file>
+        <file>sim_normal.png</file>
     </qresource>
 </RCC>

@@ -3,7 +3,10 @@
 #include "SimWindow.h"
 #include "PictureFlow.h"
 #include "TabWidget.h"
+#include <QDebug>
 #include <EditorTab.h>
+#include "SimWidget.h"
+#include <QMessageBox>
 
 void MainWindow::showSlideMode()
 {
@@ -30,6 +33,20 @@ void MainWindow::showTabMode(int index)
         editorWindow->GetTabs()->setCurrentIndex(index);
 }
 
+void MainWindow::showSimMode()
+{
+    EditorTab *tab = editorWindow->GetTabs()->tab(editorWindow->GetTabs()->currentIndex());
+    if (!tab->isCompiled)
+    {
+       QMessageBox *box = new QMessageBox;
+       box->setText("This code has not been compiled yet. Please compile it first.");
+       box->exec();
+       return;
+    }
+    setCurrentWidget(simWindow);
+    simWindow->getWidget()->setup(tab->getASM(), tab->getBinary(), tab->getMemory());
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QStackedWidget(parent)
 {
@@ -43,4 +60,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(editorWindow->GetTabs(), SIGNAL(change2SlideMode()), SLOT(showSlideMode()));
     connect(pictureFlow, SIGNAL(widgetSelected(int)), SLOT(showTabMode(int)));
+    connect(editorWindow, SIGNAL(simSignal()), SLOT(showSimMode()));
+    connect(simWindow, SIGNAL(editCode()), SLOT(showTabMode()));
 }

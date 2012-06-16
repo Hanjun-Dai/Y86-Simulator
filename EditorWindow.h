@@ -14,13 +14,18 @@ public:
     
     TabWidget* GetTabs();
 
+signals:
+    void simSignal();
+
 public slots:
 
 private slots:
     void addNewTab();
+    void compileCode();
+
 private:
     TabWidget *tabwidget;
-    ToolButton *addTabButton;
+    ToolButton *addTabButton, *saveButton, *openButton, *compileButton, *simButton;
 };
 
 #endif // EDITORWINDOW_H

@@ -19,6 +19,7 @@ public slots:
 private slots:
     void showTabMode(int index = -1);
     void showSlideMode();
+    void showSimMode();
 
 private:
     EditorWindow *editorWindow;

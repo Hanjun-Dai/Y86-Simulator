@@ -7,13 +7,14 @@ class GraphView;
 class MemoryTab;
 class CacheTab;
 class RegFileView;
-class EditorTab;
+class QTableWidget;
 class SimWidget : public QWidget
 {
     Q_OBJECT
 public:
     explicit SimWidget(QWidget *parent = 0);
-    
+    void setup(QString asmcode, QString binary, char* memory);
+
 signals:
     
 public slots:
@@ -23,7 +24,7 @@ private:
     MemoryTab *memoryTab;
     CacheTab *cacheTab;
     RegFileView *regFileView;
-    EditorTab *editorTab;
+    QTableWidget *codeView;
 };
 
 #endif // SIMWIDGET_H

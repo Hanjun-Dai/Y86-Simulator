@@ -4,7 +4,10 @@
 #include <QSplitter>
 #include <QGridLayout>
 #include "EditorTab.h"
+#include <QDebug>
 #include "ASMHighlighter.h"
+#include "Assembler.h"
+#include "Constants.h"
 
 class EditorTabPrivate
 {
@@ -13,10 +16,44 @@ public:
     QString title;
 };
 
+QString EditorTab::getASM()
+{
+    return asmEdit->toPlainText();
+}
+
+QString EditorTab::getBinary()
+{
+    return binaryEdit->toPlainText();
+}
+
+char* EditorTab::getMemory()
+{
+    return memory;
+}
+
+void EditorTab::changeState()
+{
+    isEmpty = false;
+    isCompiled = false;
+}
+
+bool EditorTab::compile()
+{
+    QString binarycode = Assembler::Compile(asmEdit->toPlainText(), memory, MAX_ADD);
+
+    if (!binarycode.isNull())
+    {
+        binaryEdit->setText(binarycode);
+        return true;
+    }
+    return false;
+}
+
 EditorTab::EditorTab(QWidget *parent)
     : QWidget(parent)
 {
     isEmpty = true;
+    isCompiled = false;
     d = new EditorTabPrivate();
 
     QSplitter *mainsplitter = new QSplitter;
@@ -42,6 +79,8 @@ EditorTab::EditorTab(QWidget *parent)
     layout->addWidget(mainsplitter);
 
     setLayout(layout);
+
+    connect(asmEdit, SIGNAL(textChanged()), SLOT(changeState()));
 }
 
 EditorTab::~EditorTab()
