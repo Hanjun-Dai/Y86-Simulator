@@ -22,6 +22,7 @@ public slots:
 private slots:
     void addNewTab();
     void compileCode();
+    void openFile();
 
 private:
     TabWidget *tabwidget;

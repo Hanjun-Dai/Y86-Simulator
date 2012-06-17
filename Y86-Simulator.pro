@@ -16,7 +16,8 @@ SOURCES += \
     ASMHighlighter.cpp \
     Pipeline.cpp \
     Assembler.cpp \
-    Tools.cpp
+    Tools.cpp \
+    VALUE.cpp
 
 HEADERS += \
     MainWindow.h \
@@ -36,7 +37,8 @@ HEADERS += \
     Pipeline.h \
     Constants.h \
     Assembler.h \
-    Tools.h
+    Tools.h \
+    VAlUE.h
 
 RESOURCES += \
     images/images.qrc

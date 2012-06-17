@@ -21,5 +21,6 @@
         <file>sim_check.png</file>
         <file>sim_hover.png</file>
         <file>sim_normal.png</file>
+        <file>pipeline.bmp</file>
     </qresource>
 </RCC>

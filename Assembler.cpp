@@ -5,8 +5,9 @@
 #include <QMap>
 #include <QDebug>
 
-QString Assembler::Compile(QString asmcode, char *binary, const int arrlen)
+QString Assembler::Compile(QString asmcode, char *binary, const int arrlen, int &max_addr)
 {
+    max_addr = 0;
     QString tmp = "";
     for (int i = 0; i < asmcode.size(); ++i)
     {
@@ -20,7 +21,7 @@ QString Assembler::Compile(QString asmcode, char *binary, const int arrlen)
     QString unknowns[arrlen];
     for (int i = 0; i < arrlen; ++i)
     {
-        binary[i] = 0xff;
+        binary[i] = 0;
         unknowns[i] = "";
     }
 
@@ -220,6 +221,8 @@ QString Assembler::Compile(QString asmcode, char *binary, const int arrlen)
         } while (true);
         result = result + bcode + '\n';
     } while (true);
+
+    max_addr = curIndex;
 
     for (int i = 0; i < arrlen; ++i)
         if (!unknowns[i].isNull() && unknowns[i].size() > 0)

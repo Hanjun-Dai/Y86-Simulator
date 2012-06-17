@@ -44,7 +44,7 @@ void MainWindow::showSimMode()
        return;
     }
     setCurrentWidget(simWindow);
-    simWindow->getWidget()->setup(tab->getASM(), tab->getBinary(), tab->getMemory());
+    simWindow->getWidget()->setup(tab->getASM(), tab->getBinary(), tab->getMemory(), tab->getMaxAddr());
 }
 
 MainWindow::MainWindow(QWidget *parent) :

@@ -14,6 +14,9 @@ public:
     static QString string2hex(QString code);
     static void setMem(int &curIndex, char* memory, QString code);
     static int getRegCode(QString code);
+    static int Get4Bytes(int idx);
+    static void ALU();
+    static void SetCnd();
 
 signals:
 

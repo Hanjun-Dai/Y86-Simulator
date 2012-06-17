@@ -8,7 +8,7 @@ class Assembler : public QObject
     Q_OBJECT
 public:
     explicit Assembler(QObject *parent = 0);
-    static QString Compile(QString asmcode, char* binary, const int arrlen);
+    static QString Compile(QString asmcode, char* binary, const int arrlen, int &max_addr);
 
 signals:
     

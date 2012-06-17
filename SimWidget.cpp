@@ -8,10 +8,15 @@
 #include <QTabWidget>
 #include <QTableWidget>
 #include "Constants.h"
+#include "Tools.h"
+#include <QDebug>
 #include <QTextStream>
+#include <Pipeline.h>
+#include "VAlUE.h"
 
-void SimWidget::setup(QString asmcode, QString binary, char *memory)
+void SimWidget::setup(QString asmcode, QString binary, char *mem, int max_addr)
 {
+    Max_Address = max_addr;
     QTextStream s1(&asmcode), s2(&binary);
     codeView->setRowCount(MAX_ADD);
     int rowcnt = 0;
@@ -27,6 +32,27 @@ void SimWidget::setup(QString asmcode, QString binary, char *memory)
         rowcnt++;
     }
     codeView->setRowCount(rowcnt);
+
+    for (int i = 0; i < MAX_ADD; ++i)
+        memory[i] = mem[i];
+
+    reset();
+}
+
+void SimWidget::reset()
+{
+    Pipeline::reset(memory);
+    graphView->reset();
+    memoryTab->updateUI();
+    regFileView->updateUI();
+}
+
+void SimWidget::singleStep()
+{
+    Pipeline::singleStep();
+    graphView->updateUI();
+    memoryTab->updateUI();
+    regFileView->updateUI();
 }
 
 SimWidget::SimWidget(QWidget *parent) :

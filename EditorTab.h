@@ -29,6 +29,7 @@ public:
     QString getASM();
     QString getBinary();
     char* getMemory();
+    int getMaxAddr();
 
 signals:
     void titleChanged();
@@ -39,6 +40,7 @@ private slots:
 private:
     EditorTabPrivate *d;
     QTextEdit *binaryEdit, *asmEdit;
-    char memory[MAX_ADD];
+    char memory[MAX_ADD + 100];
+    int max_addr;
 };
 #endif // EDITORTAB_H

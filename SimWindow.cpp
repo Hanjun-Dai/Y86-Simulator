@@ -16,8 +16,17 @@ SimWindow::SimWindow(QWidget *parent) :
     editButton = new ToolButton(i1, i2, i3);
     toolbar->addWidget(editButton);
 
+    QToolButton *resetButton = new QToolButton;
+    toolbar->addWidget(resetButton);
+
+    QToolButton *singleStepButton = new QToolButton;
+    toolbar->addWidget(singleStepButton);
+
     simWidget = new SimWidget;
     mainlayout->addWidget(simWidget, 1, 0);
 
     connect(editButton, SIGNAL(clicked()), SIGNAL(editCode()));
+
+    connect(resetButton, SIGNAL(clicked()), simWidget, SLOT(reset()));
+    connect(singleStepButton, SIGNAL(clicked()), simWidget, SLOT(singleStep()));
 }

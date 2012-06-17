@@ -37,9 +37,21 @@ void EditorTab::changeState()
     isCompiled = false;
 }
 
+int EditorTab::getMaxAddr()
+{
+    return max_addr;
+}
+
+void EditorTab::setASM(QString text)
+{
+    isEmpty = false;
+    asmEdit->setText(text);
+}
+
 bool EditorTab::compile()
 {
-    QString binarycode = Assembler::Compile(asmEdit->toPlainText(), memory, MAX_ADD);
+    max_addr = 0;
+    QString binarycode = Assembler::Compile(asmEdit->toPlainText(), memory, MAX_ADD, max_addr);
 
     if (!binarycode.isNull())
     {
